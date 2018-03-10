@@ -3,16 +3,30 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { UserComponent } from './components/user/user.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { FormsModule } from '@angular/forms';
+import { TodoService } from './services/todo.service';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes} from '@angular/router';
 
-
+const appRoutes:Routes = [
+  {path:"", component:UserComponent},
+  {path:"about", component:AboutusComponent}
+]
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserComponent,
+    AboutusComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
